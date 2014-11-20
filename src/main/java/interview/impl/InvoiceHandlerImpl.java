@@ -42,7 +42,7 @@ public class InvoiceHandlerImpl implements InvoiceHandler {
 			e.printStackTrace();
 		}
 		
-		Boolean result = null;
+		Boolean result = Boolean.FALSE;
 		
 		if (parsedData != null && FileUtils.makeOutputDir()) {
 			for (OutputFormat format: outputFormats) {
@@ -53,8 +53,6 @@ public class InvoiceHandlerImpl implements InvoiceHandler {
 				}
 			}
 			result = Boolean.TRUE;
-		} else {
-			result = Boolean.FALSE;
 		}
 		
 		return result;
