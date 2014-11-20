@@ -6,8 +6,8 @@ import java.io.File;
 import java.util.Set;
 
 /**
- * An interface, containing a single abstract method for parsing large CSV files
- * to a specified output format.
+ * Represents a handler for parsing large CSV files
+ * to a specified {@link OutputFormat}.
  * 
  * @author Konstantin Yovkov
  * 

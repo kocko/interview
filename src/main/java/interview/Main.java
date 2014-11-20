@@ -19,4 +19,5 @@ public class Main {
 		boolean result = invoiceHandler.ingestInvoiceData(new File("loadData_small.csv"), set);
 		System.out.println(result ? "Success! Check for an 'output' folder!" : "Oops...some error appeared.");
 	}
+	
 }

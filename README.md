@@ -8,8 +8,7 @@ For example:
 	public class Main {
 
 		public static void main(String[] args) throws IOException {
-			TauliaInvoiceHandler invoiceHandler = new TauliaInvoiceHandlerImpl();
-		
+			InvoiceHandler invoiceHandler = new InvoiceHandlerImpl();		
 			Set<OutputFormat> set = new TreeSet<OutputFormat>();
 			set.add(OutputFormat.CSV);
 			set.add(OutputFormat.XML);
