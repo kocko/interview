@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-public class TauliaCSVParser {
+public class CSVInvoicesParser {
 
 	public Map<String, List<Invoice>> parseCsvData(File file) throws IOException {
 		CSVFormat format = CSVFormat.EXCEL.withHeader().withDelimiter(',');

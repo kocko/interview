@@ -13,7 +13,7 @@ import java.util.Map;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
-public class TauliaCSVWriter {
+public class CSVInvoicesWriter {
 
 	public void writeSplitByBuyerDataToFiles(Map<String, List<Invoice>> data) {
 		CSVFormat format = CSVFormat.EXCEL.withHeader().withDelimiter(',');

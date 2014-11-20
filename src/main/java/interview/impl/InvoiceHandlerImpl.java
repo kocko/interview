@@ -1,11 +1,11 @@
 package interview.impl;
 
-import interview.TauliaInvoiceHandler;
+import interview.InvoiceHandler;
 import interview.bean.Invoice;
-import interview.csv.TauliaCSVWriter;
+import interview.csv.CSVInvoicesWriter;
 import interview.enums.OutputFormat;
 import interview.utils.FileUtils;
-import interview.xml.TauliaXMLWriter;
+import interview.xml.XmlInvoicesWriter;
 
 import java.io.File;
 import java.io.FileReader;
@@ -21,7 +21,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-public class TauliaInvoiceHandlerImpl implements TauliaInvoiceHandler {
+public class InvoiceHandlerImpl implements InvoiceHandler {
 
 	public boolean ingestInvoiceData(File file, Set<OutputFormat> outputFormats) throws IllegalArgumentException {
 		if (outputFormats == null || outputFormats.size() == 0) {
@@ -36,8 +36,8 @@ public class TauliaInvoiceHandlerImpl implements TauliaInvoiceHandler {
 			e.printStackTrace();
 		}
 		
-		TauliaCSVWriter csvWriter = new TauliaCSVWriter();
-		TauliaXMLWriter xmlWriter = new TauliaXMLWriter();
+		CSVInvoicesWriter csvWriter = new CSVInvoicesWriter();
+		XmlInvoicesWriter xmlWriter = new XmlInvoicesWriter();
 		
 		Boolean result = null;
 		

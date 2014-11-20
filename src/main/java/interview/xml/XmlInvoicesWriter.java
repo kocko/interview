@@ -12,7 +12,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-public class TauliaXMLWriter {
+public class XmlInvoicesWriter {
 
 	public void writeToXML(Map<String, List<Invoice>> data) {
 		

@@ -12,7 +12,7 @@ import java.util.Set;
  * @author Konstantin Yovkov
  * 
  */
-public interface TauliaInvoiceHandler {
+public interface InvoiceHandler {
 
 	/**
 	 * Ingests and parses a given file to the specified output format(s).
