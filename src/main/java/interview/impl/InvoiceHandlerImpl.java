@@ -27,31 +27,23 @@ public class InvoiceHandlerImpl implements InvoiceHandler {
 		xmlWriter = new XmlInvoicesWriter();
 	}
 
-	public boolean ingestInvoiceData(File file, Set<OutputFormat> outputFormats) throws IllegalArgumentException {
+	public boolean ingestInvoiceData(File file, Set<OutputFormat> outputFormats) throws IllegalArgumentException, IOException {
 		Objects.requireNonNull(file, "You have to provide a non-null reference to a file");
 		Objects.requireNonNull(outputFormats, "You have to provice a non-null list of output formats");
 		if (outputFormats.size() == 0) {
 			throw new IllegalArgumentException("You have to provide a non-empty list of output formats!");
 		}
 		
-		Map<String, List<Invoice>> parsedData = null;
-		
-		try {
-			parsedData = CsvInvoicesParser.parseCsvData(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Map<String, List<Invoice>> parsedData = CsvInvoicesParser.parseCsvData(file);
 		
 		Boolean result = Boolean.FALSE;
-		
 		if (parsedData != null && FileUtils.makeOutputDir()) {
-			for (OutputFormat format: outputFormats) {
-				Optional<Writer<?>> writerExistence = getWriterForOutputFormat(format);
-				if (writerExistence.isPresent()) {
-					Writer<?> writer = writerExistence.get();
-					writer.process(parsedData);
-				}
-			}
+			outputFormats.stream()
+						 .filter(format -> getWriterForOutputFormat(format).isPresent())
+						 .forEach(format -> {
+							 Writer<?> writer = getWriterForOutputFormat(format).get();
+							 writer.process(parsedData);
+						 });
 			result = Boolean.TRUE;
 		}
 		
@@ -63,9 +55,11 @@ public class InvoiceHandlerImpl implements InvoiceHandler {
 		switch (outputFormat){
 			case CSV: {
 				result = Optional.of(csvWriter);
+				break;
 			}
 			case XML: {
-				result = Optional.of(xmlWriter); 
+				result = Optional.of(xmlWriter);
+				break;
 			}
 		}
 		return result;
