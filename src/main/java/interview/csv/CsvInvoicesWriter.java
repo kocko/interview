@@ -17,6 +17,7 @@ import org.apache.commons.csv.CSVPrinter;
 
 public class CsvInvoicesWriter implements Writer<List<Invoice>> {
 
+	@Override
 	public void process(Map<String, List<Invoice>> data) {
 		data.entrySet()
 		    .stream()

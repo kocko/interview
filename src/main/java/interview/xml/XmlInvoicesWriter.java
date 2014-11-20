@@ -15,6 +15,7 @@ import javax.xml.bind.Marshaller;
 
 public class XmlInvoicesWriter implements Writer<Invoice> {
 
+	@Override
 	public void process(Map<String, List<Invoice>> data) {
 		data.entrySet()
 			.stream()
